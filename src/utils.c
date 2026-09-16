@@ -52,3 +52,12 @@ char *image_2_ascii(const unsigned char *image,const int width,const int height,
     return ascii_return;
 }
 
+float get_llen_scale(size_t width, float llen)
+{
+	if (llen == 0)
+	{
+		return 0;
+	}
+	float scale = (float)(width)/llen;
+	return scale;
+}

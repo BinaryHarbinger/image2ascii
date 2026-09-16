@@ -35,6 +35,8 @@ Convert an image to ASCII art using:
 | Large | `-l` | `1/6` |
 | Extra Large | `-xl` | `1/3` |
 | Extra Extra Large | `-xxl` | `1/1` |
+| Costom line len | `-llen <size>` | `costom line len size` |
+
 
   
 

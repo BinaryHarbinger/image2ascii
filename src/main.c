@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     char *executable_name = basename(argv[0]);
 
     //check if the arguments count is valid.
-    if (argc > 3 && argc > 1)
+    if (argc < 2 || argc > 4)
     {
         printf( "Usage error : Invalid args.\n"
                 "help        : %s -h or %s -help."
@@ -41,16 +41,19 @@ int main(int argc, char *argv[])
                 "                     large             = -l    || 1/6 .\n"
                 "                     extra large       = -xl   || 1/3 .\n"
                 "                     extra extra large = -xxl  || 1/1 .\n"
+                "                     costom line lengh = -llen || costom line lengh.\n"
             , executable_name, executable_name, executable_name);
+        return 0;
     }
     
     //create an array of sizes -s -m -l -xl -xxl.
-    SizeOption sizes[5] = {
-            {"small"            , "-s"  , 24 },   
-            {"medium"           , "-m"  , 12 },
-            {"large"            , "-l"  , 6  },
-            {"extra large"      , "-xl" , 3  },
-            {"extra extra large", "-xxl", 1  },
+    SizeOption sizes[6] = {
+            {"small"             , "-s"   , 24   },   
+            {"medium"            , "-m"   , 12   },
+            {"large"             , "-l"   , 6    },
+            {"extra large"       , "-xl"  , 3    },
+            {"extra extra large ", "-xxl" , 1    },
+	        {"costom line lenght", "-llen", -2   }
     };
 
     //calculate the number of sizes in sizes.
@@ -99,7 +102,12 @@ int main(int argc, char *argv[])
     /*
         Check if the index is valid.
         -1 means the user provided the size flag,but the value is invalid.
+	-2 means the user use costom line lenght ;)
     */
+    // just ingore the code quality (i code this under my scool desk lol)
+    // what an ass pain to use ur phone keyboard to code .
+
+    float scale = 0;
     if (size_index == -1)
     {
         printf( "Input Error: Invalid size flag.\n"
@@ -108,10 +116,20 @@ int main(int argc, char *argv[])
         image_free(image);
         return 6;
     }
-
-    int final_width =   (int)((float)width  / (float)sizes[size_index].scale);
+    else if (sizes[size_index].scale == -2)
+    {
+	int line_len = atoi(argv[3]);
+	scale =  get_llen_scale(width, line_len); 
+    }
+    else
+    {
+	    scale = sizes[size_index].scale;
+    }
+    
+    
+    int final_width =   (int)((float)width  / scale);
     //divide by 2 to account for the aspect ratio of characters in the terminal.
-    int final_height =  (int)((float)height / (float)sizes[size_index].scale / 2.0);
+    int final_height =  (int)(((float)height / scale)/ 2.0);
     //resize image.
     unsigned char *resized_image = resize_image(image, width, height, 0,
                                                 final_width, final_height, 0,
