@@ -52,12 +52,12 @@ char *image_2_ascii(const unsigned char *image,const int width,const int height,
     return ascii_return;
 }
 
-float get_llen_scale(size_t width, float llen)
+float get_llen_scale(size_t width, size_t llen)
 {
 	if (llen == 0)
 	{
 		return 0;
 	}
-	float scale = (float)(width)/llen;
+	float scale = (float)(width)/(float)(llen);
 	return scale;
 }

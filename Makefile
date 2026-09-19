@@ -1,7 +1,6 @@
 TARGET = image2ascii
 
 CC = gcc
-
 CFLAGS = -Wall -Wextra -std=c11 -g -O2 -Iinclude
 
 SRC_DIR = src
@@ -26,4 +25,4 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 
 clean:
 	rm -rf $(BUILD_DIR)
-	rm -f $(TARGET) $(TARGET).exe
+	rm -f $(TARGET)

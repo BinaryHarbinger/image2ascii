@@ -102,11 +102,8 @@ int main(int argc, char *argv[])
     /*
         Check if the index is valid.
         -1 means the user provided the size flag,but the value is invalid.
-	-2 means the user use costom line lenght ;)
+	    -2 means the user use costom line lenght.
     */
-    // just ingore the code quality (i code this under my scool desk lol)
-    // what an ass pain to use ur phone keyboard to code .
-
     float scale = 0;
     if (size_index == -1)
     {
@@ -118,8 +115,8 @@ int main(int argc, char *argv[])
     }
     else if (sizes[size_index].scale == -2)
     {
-	int line_len = atoi(argv[3]);
-	scale =  get_llen_scale(width, line_len); 
+        size_t line_len = abs(atoi(argv[3]));
+        scale =  get_llen_scale(width, line_len); 
     }
     else
     {
@@ -140,7 +137,7 @@ int main(int argc, char *argv[])
     {
         printf("Error : Faild to resize image.");
         image_free(image);
-        return 7;
+        return 8;
     }
 
     //transform image into ascii.
@@ -149,7 +146,7 @@ int main(int argc, char *argv[])
     {
         printf("Error : Faild to transform image into ascii.");
         image_free(image);
-        return 8;
+        return 9;
     }
 
     //print the output
