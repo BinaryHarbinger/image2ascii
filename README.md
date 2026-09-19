@@ -104,9 +104,6 @@ make
 
 ## Art Examples
 
-
-## Art Examples
-
 ![Example 1](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/1.jpeg)
 
 ![Example 2](https://raw.githubusercontent.com/Drbsy/image2ascii/main/examples/images/2.jpeg)
