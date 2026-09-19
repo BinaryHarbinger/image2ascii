@@ -9,7 +9,7 @@ Convert an image to ASCII art using:
 
 ```bash
 
-.\image2ascii  <path_to_image>  <size>
+./image2ascii  <path_to_image>  <size>
 
 ```
 
@@ -30,7 +30,7 @@ To display the help message:
 
 ```bash
 
-.\image2ascii.exe  -h
+./image2ascii  -h
 
 ```
 
@@ -38,7 +38,7 @@ or:
 
 ```bash
 
-.\image2ascii.exe  -help
+./image2ascii  -help
 
 ```
 
